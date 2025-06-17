@@ -50,6 +50,8 @@ func (c *Client) ChatCompletion(query string) (string, error) {
 		}
 	}
 
+	log.GetLogger().Info("responseFormat", zap.Any("format", responseFormat))
+
 	req := openai.ChatCompletionRequest{
 		Model: config.Conf.Llm.Model,
 		Messages: []openai.ChatCompletionMessage{
@@ -67,6 +69,8 @@ func (c *Client) ChatCompletion(query string) (string, error) {
 		MaxTokens:      8192,
 		ResponseFormat: responseFormat,
 	}
+
+	log.GetLogger().Info("openai request", zap.Any("req", req))
 
 	stream, err := c.client.CreateChatCompletionStream(context.Background(), req)
 	if err != nil {
