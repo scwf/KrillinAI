@@ -96,6 +96,8 @@ func (c *Client) ChatCompletion(query string) (string, error) {
 
 		resContent += response.Choices[0].Delta.Content
 	}
+	
+	log.GetLogger().Info("openai response content", zap.String("content", resContent))
 
 	if config.Conf.Llm.Json {
 		parsedContent, err := parseJSONResponse(resContent)
