@@ -129,7 +129,9 @@ var SplitLongSentencePrompt = `请将以下原文和译文分割成2-3个部分�
 2. 切分后的句子需要符合语法规范，可添加连词等保证阅读时语言自然
 3. 确保原文和译文的分割部分一一对应
 4. 务必返回JSON格式，包含origin_part和translated_part数组，例如：
-{"align":[{"origin_part":"原文部分1","translated_part":"译文部分1"},{"origin_part":"原文部分2","translated_part":"译文部分2"}]}`
+{"align":[{"origin_part":"原文部分1","translated_part":"译文部分1"},{"origin_part":"原文部分2","translated_part":"译文部分2"}]}
+5. 除了返回4中提到的JSON格式，不要返回任何其他多余的内容
+`
 
 type SmallAudio struct {
 	AudioFile         string
